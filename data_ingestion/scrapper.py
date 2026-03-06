@@ -30,4 +30,12 @@ def extract_and_clean_sitemap(xml_content):
 res = requests.get("https://prtimes.jp/sitemap-news.xml")
 res.encoding = "UTF-8"
 result = extract_and_clean_sitemap(res.content)
-print(result[150], len(result), sep='\n\n')
+
+print("아이템 확인")
+print(result[0])
+print("확인된 아이템 개수")
+print(len(result))
+
+print("글자 깨짐 확인")
+print("Print:", result[0]['title'])
+print("Repr:", repr(result[0]['title']))
