@@ -11,8 +11,8 @@
 이번 스파이크를 통해 다음 5가지 핵심 기능의 기술적 실현 가능성을 확정합니다.
 
 ### 1. Data Sanitization (세척)
-- [ ] **Regex Power**: 일본어 유니코드 및 전각 문자 사이의 화이트스페이스 노이즈를 정규표현식으로 완벽 제거.
-- [ ] **Encoding Integrity**: iPad Juno 및 로컬 환경에서 일본어 텍스트가 깨지지 않고 처리되는지 `repr()` 기반 검증.
+- [x] **Regex Power**: 일본어 유니코드 및 전각 문자 사이의 화이트스페이스 노이즈를 정규표현식으로 완벽 제거.
+- [x] **Encoding Integrity**: iPad Juno 및 로컬 환경에서 일본어 텍스트가 깨지지 않고 처리되는지 `repr()` 기반 검증.
 
 ### 2. Intelligent Scraper & Visual Extraction (추출)
 - [ ] **Smart Slicing**: 본문 500자(Scout용)와 전체 텍스트(Deep용)를 한 번의 I/O로 분리 저장.
@@ -56,8 +56,8 @@
 ## 📝 Roadmap (The Spike Sequence)
 
 ### Phase 1: Ingestion Spike
-- [ ] XML에서 `news:` 네임스페이스 기반 태그 추출 함수 완성
-- [ ] 제목/키워드 내 일본어 텍스트 정상 출력 여부 검증
+- [x] XML에서 `news:` 네임스페이스 기반 태그 추출 함수 완성
+- [x] 제목/키워드 내 일본어 텍스트 정상 출력 여부 검증
 
 ### Phase 2: Intelligence Spike
 - [ ] 본문 앞 500자 추출 및 이미지 URL 확보 테스트
