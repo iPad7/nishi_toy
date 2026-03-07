@@ -15,7 +15,7 @@
 - [x] **Encoding Integrity**: iPad Juno 및 로컬 환경에서 일본어 텍스트가 깨지지 않고 처리되는지 `repr()` 기반 검증.
 
 ### 2. Intelligent Scraper & Visual Extraction (추출)
-- [ ] **Smart Slicing**: 본문 500자(Scout용)와 전체 텍스트(Deep용)를 한 번의 I/O로 분리 저장.
+- [x] **Smart Slicing**: 본문 500자(Scout용)와 전체 텍스트(Deep용)를 한 번의 I/O로 분리 저장.
 - [ ] **Image Hunter**: 보도자료 내 메인 이미지 URL을 정확히 추출하여 썸네일 데이터 확보.
 
 ### 3. Dual-Agent Routing (판단)
