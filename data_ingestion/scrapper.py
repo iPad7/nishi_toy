@@ -49,8 +49,24 @@ def scrape_article_body(url):
 
         scout_text = clean_text[:500]
 
+        all_images = []
+        image_list_container = soup.select_one('#js-press-release-image-list')
+
+        if image_list_container:
+            for img in image_list_container.find_all('img'):
+                src = img.get('src')
+                if src:
+                    clean_src = src.split('?')[0]
+                    if clean_src not in all_images:
+                        all_images.append(clean_src)
+
+        main_image_url = all_images[0] if len(all_images) > 0 else ""
+        gallery_images = all_images[1:] if len(all_images) > 1 else []
+
         return {
             "url": url,
+            "main_image_url": main_image_url,
+            "gallery_images": gallery_images,
             "scout_text": scout_text,
             "full_text": clean_text,
             "text_length": len(clean_text)
@@ -88,6 +104,8 @@ if __name__ == "__main__":
         print('Scout Agent 용 앞 500자 미리보기')
         print(body_result['scout_text'])
         print("..." if body_result['text_length'] > 500 else "")
+        print()
+        print("썸네일 이미지:", body_result['main_image_url'])
 
 
     # test_url = "https://prtimes.jp/main/html/rd/p/000002876.000038094.html"
