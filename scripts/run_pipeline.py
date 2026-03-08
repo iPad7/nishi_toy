@@ -3,10 +3,12 @@
 import time
 import json
 import requests
+from pathlib import Path
+from datetime import datetime
 from data_ingestion.scrapper import extract_and_clean_sitemap, scrape_article_body
 from core_logic.agent import evaluate_with_scout
 
-def run_mini_batch():
+def run_batch():
     print("1. 사이트맵 파싱 중...")
     res = requests.get("https://prtimes.jp/sitemap-news.xml")
     res.encoding = "UTF-8"
@@ -33,19 +35,26 @@ def run_mini_batch():
             "url": article['url'],
             "published_at": article['published_at'],
             "main_image": scraped_data.get('main_image_url'),
+            "extracted_location": decision.get('extracted_location'),
+            "is_kyushu_region": decision.get('is_kyushu_region'),
             "status": decision.get('status'),
-            "reason": decision.get('reason')
+            "reasoning_process": decision.get('reasoning_process')
         }
         results.append(final_record)
         
-        print(f"  -> 🤖 판정: {final_record['status']} ({final_record['reason']})\n")
+        print(f"  -> 🤖 판정: {final_record['status']}\n     추론 과정: {final_record['reasoning_process']}\n")
         
         time.sleep(1)
 
-    with open('batch_results.json', 'w', encoding='utf-8') as f:
+    timestamp = datetime.now().strftime("%y%m%d_%H%M%S")
+    file_name = f"{timestamp}.json"
+
+    Path("scripts/batch_test").mkdir(parents=True, exist_ok=True)
+
+    with open(f"scripts/batch_test/{file_name}", 'w', encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
         
-    print("✅ 배치 테스트 완료! 'batch_results.json'을 확인해 보세요.")
+    print("✅ 배치 테스트 완료! batch_test 폴더를 확인해보세요.")
 
 if __name__ == "__main__":
-    run_mini_batch()
+    run_batch()
