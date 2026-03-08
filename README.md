@@ -16,7 +16,7 @@
 
 ### 2. Intelligent Scraper & Visual Extraction (추출)
 - [x] **Smart Slicing**: 본문 500자(Scout용)와 전체 텍스트(Deep용)를 한 번의 I/O로 분리 저장.
-- [ ] **Image Hunter**: 보도자료 내 메인 이미지 URL을 정확히 추출하여 썸네일 데이터 확보.
+- [x] **Image Hunter**: 보도자료 내 메인 이미지 URL을 정확히 추출하여 썸네일 데이터 확보.
 
 ### 3. Dual-Agent Routing (판단)
 - [ ] **Scout Agent**: 500자만 읽고 `positive / negative / more_info`를 판별하여 토큰 비용 80% 절감.
@@ -60,7 +60,7 @@
 - [x] 제목/키워드 내 일본어 텍스트 정상 출력 여부 검증
 
 ### Phase 2: Intelligence Spike
-- [ ] 본문 앞 500자 추출 및 이미지 URL 확보 테스트
+- [x] 본문 앞 500자 추출 및 이미지 URL 확보 테스트
 - [ ] **[핵심]** 2단계 라우팅 프롬프트 실행 및 `more_info` 트리거 정확도 확인
 - [ ] 한국어 각색 초안의 '감도' 체크
 
